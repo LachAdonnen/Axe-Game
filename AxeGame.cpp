@@ -10,7 +10,16 @@
 #include "raylib.h"
 
 int main() {
-    // TODO: Add your code here
+    // Window dimesions
+    int width{800};
+    int height{450};
+        
+    InitWindow(width, height, "Axe Game");
+
+    while (!WindowShouldClose())
+    {
+        
+    }
     
     return 0;
 }
