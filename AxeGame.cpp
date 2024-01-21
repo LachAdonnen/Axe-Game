@@ -13,13 +13,19 @@ int main() {
     // Window dimesions
     int width{800};
     int height{450};
-        
+    
+    // Circle coordinates & dimensions
+    int circleX{200};
+    int circleY{200};
+    int radius{25};
+    
     InitWindow(width, height, "Axe Game");
 
     while (!WindowShouldClose())
     {
         BeginDrawing();
         ClearBackground(WHITE);
+        DrawCircle(circleX, circleY, radius, BLUE);
         EndDrawing();
     }
     
