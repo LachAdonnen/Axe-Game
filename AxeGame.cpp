@@ -25,6 +25,8 @@ int main() {
     int axeY{0};
     int axeLength{50};
 
+    bool collisionWithAxe{false};
+
     int axeDirection{10}; 
     
     InitWindow(width, height, "Axe Game");
@@ -35,30 +37,38 @@ int main() {
         BeginDrawing();
         ClearBackground(WHITE);
 
-        // Game logic begins
-        
-        DrawCircle(circleX, circleY, radius, BLUE);
-        // Respond to user interaction for the circle
-        if (IsKeyDown(KEY_D) && circleX < width)
+        // Check for loss condition
+        if (collisionWithAxe)
         {
-            circleX += circleMoveSpeed;
+            DrawText("Game Over!", 400, 200, 20, RED);
         }
-        if (IsKeyDown(KEY_A) && circleX > 0)
+        else
         {
-            circleX -= circleMoveSpeed;
+            // Game logic begins
+            
+            DrawCircle(circleX, circleY, radius, BLUE);
+            // Respond to user interaction for the circle
+            if (IsKeyDown(KEY_D) && circleX < width)
+            {
+                circleX += circleMoveSpeed;
+            }
+            if (IsKeyDown(KEY_A) && circleX > 0)
+            {
+                circleX -= circleMoveSpeed;
+            }
+
+            // Manage the Axe
+            DrawRectangle(axeX, axeY, axeLength, axeLength, RED);
+
+            // Move the axe
+            axeY += axeDirection;
+            if (axeY > height || axeY < 0)
+            {
+                axeDirection = -axeDirection;
+            }
+
+            // Game logic ends
         }
-
-        // Manage the Axe
-        DrawRectangle(axeX, axeY, axeLength, axeLength, RED);
-
-        // Move the axe
-        axeY += axeDirection;
-        if (axeY > height || axeY < 0)
-        {
-            axeDirection = -axeDirection;
-        }
-
-        // Game logic ends
 
         EndDrawing();
     }
