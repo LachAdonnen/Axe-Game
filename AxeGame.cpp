@@ -24,6 +24,8 @@ int main() {
     int axeX{400};
     int axeY{0};
     int axeLength{50};
+
+    int axeDirection{10}; 
     
     InitWindow(width, height, "Axe Game");
     SetTargetFPS(60);
@@ -48,6 +50,13 @@ int main() {
 
         // Manage the Axe
         DrawRectangle(axeX, axeY, axeLength, axeLength, RED);
+
+        // Move the axe
+        axeY += axeDirection;
+        if (axeY > height || axeY < 0)
+        {
+            axeDirection = -axeDirection;
+        }
 
         // Game logic ends
 
