@@ -19,11 +19,21 @@ int main() {
     int circleY{200};
     int radius{25};
     int circleMoveSpeed{10};
+    // Circle edges
+    int circleLeftEdge{circleX - radius};
+    int circleRightEdge{circleX + radius};
+    int circleTopEdge{circleY - radius};
+    int circleBottomEdge{circleY + radius};
 
     // Axe coordinates & dimensions
     int axeX{400};
     int axeY{0};
     int axeLength{50};
+    // Axe edges
+    int axeLeftEdge{axeX};
+    int axeRightEdge{axeX + axeLength};
+    int axeTopEdge{axeY};
+    int axeBottomEdge{axeY + axeLength};
 
     bool collisionWithAxe{false};
 
@@ -45,6 +55,22 @@ int main() {
         else
         {
             // Game logic begins
+
+            // Update circle and axe edges
+            circleLeftEdge = circleX - radius;
+            circleRightEdge = circleX + radius;
+            circleTopEdge = circleY - radius;
+            circleBottomEdge = circleY + radius;
+            axeLeftEdge = axeX;
+            axeRightEdge = axeX + axeLength;
+            axeTopEdge = axeY;
+            axeBottomEdge = axeY + axeLength;
+
+            // Check for collision
+            collisionWithAxe = 
+                (circleRightEdge >= axeLeftEdge && circleLeftEdge <= axeRightEdge) &&
+                (circleBottomEdge >= axeTopEdge && circleTopEdge <= axeBottomEdge);
+            
             
             DrawCircle(circleX, circleY, radius, BLUE);
             // Respond to user interaction for the circle
