@@ -19,6 +19,11 @@ int main() {
     int circleY{200};
     int radius{25};
     int circleMoveSpeed{10};
+
+    // Axe coordinates & dimensions
+    int axeX{400};
+    int axeY{0};
+    int axeLength{50};
     
     InitWindow(width, height, "Axe Game");
     SetTargetFPS(60);
@@ -40,6 +45,9 @@ int main() {
         {
             circleX -= circleMoveSpeed;
         }
+
+        // Manage the Axe
+        DrawRectangle(axeX, axeY, axeLength, axeLength, RED);
 
         // Game logic ends
 
